@@ -7,6 +7,7 @@ type JwtPayload = {
   email?: string;
 };
 
+
 type Props = {
   setCurrentUser: (value: string | null) => void;
 };
