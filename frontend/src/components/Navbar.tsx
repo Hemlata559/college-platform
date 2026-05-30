@@ -1,42 +1,4 @@
-// import { Link, NavLink } from "react-router-dom";
 
-// type Props = {
-//   currentUser: string | null;
-//   setCurrentUser: (value: string | null) => void;
-// };
-
-// const Navbar = ({ currentUser, setCurrentUser }: Props) => {
-//   return (
-//     <nav className="site-nav">
-//       <div className="brand">
-//         <svg className="brand-icon" viewBox="0 0 32 32" aria-hidden="true">
-//           <path d="M3 11.5 16 5l13 6.5L16 18 3 11.5Z" fill="currentColor" />
-//           <path d="M8 15.5v6c4.6 3.2 11.4 3.2 16 0v-6l-8 4-8-4Z" fill="currentColor" opacity="0.78" />
-//         </svg>
-//         CollegeHub
-//       </div>
-
-//       <div className="nav-links">
-//         <NavLink to="/" end className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Home</NavLink>
-//         <NavLink to="/compare" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Compare</NavLink>
-//         <NavLink to="/predictor" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Predictor</NavLink>
-//         <NavLink to="/discussions" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Discussions</NavLink>
-//         <NavLink to="/saved" className={({ isActive }) => "nav-link" + (isActive ? " active" : "")}>Saved</NavLink>
-//         {currentUser ? (
-//           <button type="button" className="outline-button small-button" onClick={() => setCurrentUser(null)}>
-//             Logout ({currentUser})
-//           </button>
-//         ) : (
-//           <Link className="outline-button small-button" to="/login">
-//             Login / Signup
-//           </Link>
-//         )}
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default Navbar;
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 
