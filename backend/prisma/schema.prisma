@@ -1,0 +1,87 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id          String   @id @default(cuid())
+  name        String?
+  email       String   @unique
+  password    String?
+
+  accounts    Account[]
+
+  savedItems  SavedCollege[]
+  discussions  Discussion[]
+
+  createdAt   DateTime @default(now())
+}
+
+/**
+ * OAuth accounts (GitHub, Google, etc.)
+ */
+model Account {
+  id           String @id @default(cuid())
+
+  userId       String
+  provider     String
+  providerId   String
+
+  user         User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerId])
+}
+
+/**
+ * College entity
+ */
+model College {
+  id        String   @id @default(cuid())
+  name      String
+  location  String
+  type      String   // Government / Private / Deemed
+  rating    Float
+
+  fees      Json     // structured fees instead of string
+  courses   String[] // important for filtering
+
+  cutoff    Json?    
+  placement Json?    
+
+  savedBy   SavedCollege[]
+}
+
+/**
+ * Many-to-many: User ↔ College
+ */
+model SavedCollege {
+  id          String   @id @default(cuid())
+
+  userId      String
+  collegeId   String
+
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  college     College  @relation(fields: [collegeId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+
+  @@unique([userId, collegeId])
+}
+
+/**
+ * User discussions
+ */
+model Discussion {
+  id          String   @id @default(cuid())
+  question    String
+  details     String
+
+  userId      String
+  user        User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt   DateTime @default(now())
+}
