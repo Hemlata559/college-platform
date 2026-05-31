@@ -10,9 +10,10 @@ type Props = {
 };
 
 type AuthMode = "login" | "signup";
-
+//change api url to make it comatible for deployment
 const loginWithGitHub = () => {
-  window.location.href = "http://localhost:5000/auth/github";
+  const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+  window.location.href = `${apiUrl}/auth/github`;
 };
 
 const LoginPage = ({ setCurrentUser }: Props) => {
