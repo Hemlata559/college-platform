@@ -5,8 +5,11 @@ import authRoutes from "./routes/authRoutes";
 import collegeRoutes from "./routes/college";
 
 const app = express();
-
-app.use(cors({ origin: process.env.CLIENT_URL, credentials: true }));
+// changed cors to handle deploy request
+app.use(cors({origin: [
+      "http://localhost:5173",
+      "https://college-platform-mauve.vercel.app"
+    ], credentials: true }));
 app.use(express.json());
 app.use(passport.initialize());
 app.use("/api/colleges", collegeRoutes);
