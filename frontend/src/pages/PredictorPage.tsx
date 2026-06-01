@@ -23,9 +23,11 @@ const PredictorPage = () => {
       setLoading(true);
       setHasSearched(true);
 
+      const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
       // Encoding parameters safely to manage space characters in exam strings
       const res = await fetch(
-        `http://localhost:5000/api/colleges/recommend?exam=${encodeURIComponent(exam)}&rank=${numericRank}`
+        `${apiUrl}/api/colleges/recommend?exam=${encodeURIComponent(exam)}&rank=${numericRank}`
       );
 
       if (!res.ok) {
