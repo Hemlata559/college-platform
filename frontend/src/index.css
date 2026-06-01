@@ -983,3 +983,68 @@ select {
   color: #ffffff !important;
   background-color: rgba(255, 255, 255, 0.05) !important;
 }
+/* ==========================================================================
+   13. HERO SECTION RESPONSIVE FIX
+   ========================================================================== */
+@media (max-width: 768px) {
+  /* 1. Scale down the massive outer padding & isolate boundaries */
+  .hero-section {
+    padding: 2.5rem 1.25rem !important;
+    margin-bottom: 2rem !important;
+    border-radius: 20px !important; /* Slightly tighter curves for smaller viewports */
+    text-align: center !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
+  }
+
+  /* 2. Resize "Find Your Perfect College" heading */
+  .hero-section h1 {
+    font-size: 2rem !important; /* Drastically trims down clamp(2.5rem, 5vw, 4rem) */
+    line-height: 1.25 !important;
+    letter-spacing: -0.02em !important;
+    margin-bottom: 1rem !important;
+    width: 100% !important;
+  }
+
+  /* 3. Compress paragraph layout */
+  .hero-section p {
+    font-size: 0.95rem !important; /* Optimizes readability over screen economy */
+    line-height: 1.5 !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    padding: 0 0.25rem !important;
+  }
+
+  /* 4. Force stats numbers ("500+", "100%") to layout vertically */
+  /* If you wrapped your <h2> elements inside a custom div container later, this aligns both */
+  .hero-section .stats-container,
+  .hero-section > div:has(h2) {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 1.5rem !important;
+    margin-top: 2rem !important;
+    width: 100% !important;
+  }
+
+  /* 5. Scale down numeric micro headers safely */
+  .hero-section h2 {
+    font-size: 1.85rem !important;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.25rem !important;
+    background: linear-gradient(135deg, #ffffff 40%, var(--secondary) 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+  }
+
+  /* Adjust the label captions below the stats */
+  .hero-section h2 + em,
+  .hero-section h2 + p {
+    font-size: 0.8rem !important;
+    letter-spacing: 0.05em !important;
+    text-transform: uppercase !important;
+    color: var(--text-secondary) !important;
+  }
+}
