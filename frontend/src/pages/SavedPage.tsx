@@ -14,8 +14,14 @@ const SavedPage = ({ currentUser }: Props) => {
   const compareIds = loadFromStorage<string[]>("compareColleges", []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/colleges")
-      .then((res) => res.json())
+    const apiUrl = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    fetch(`${apiUrl}/api/colleges`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error(`Server returned status code: ${res.status}`);
+        }
+        return res.json();
+      })
       .then((data) => {
         setColleges(data);
         setLoading(false);
