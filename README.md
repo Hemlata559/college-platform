@@ -5,6 +5,8 @@
 CollegeHub is a full-stack web application designed to help students explore colleges, compare institutions, save favorites, participate in discussions, and receive personalized college recommendations based on entrance exam performance.
 
 The platform aims to simplify the college selection process by providing a centralized system where students can access important college information and make informed decisions.
+<img width="1898" height="907" alt="image" src="https://github.com/user-attachments/assets/a11dc5af-b2de-4a68-ba9a-d8132c9b46ab" />
+
 
 ---
 
